@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+    h1 #{title}: #{book.title}
+    p #{book.author.name}
+
+    if list.length
+        p #[strong Delete exemplars of books before delete it]
+
+        div(style='margin-left:20px;margin-top:20px')
+
+            h3 list
+
+            dl 
+            each boook in list
+                dt
+                    a(href=boook.url) #{boook.book.title} 
+                dd #{boook.book.summary}
+    else 
+        p You realy want delete this book?
+
+        form(method='POST', action='')
+            div.form-group 
+                input#bookid.form-control(type='hidden', name='bookid', required='true', value=book._id)
+
+            button.btn.btn-primary(type='submit') Delete

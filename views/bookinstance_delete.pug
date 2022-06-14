@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+    h1 #{title}: #{book.title}
+    p= bookinstance.status
+    p Do you realy want delete this book from library?
+
+    form(method='POST' action='')
+        div.form-group 
+            input#bookinstanceid.form-control(type='hidden', name='bookinstanceid', required='true', value=bookinstance._id)
+        button.btn.btn-primary(type='submit') Delete :(
